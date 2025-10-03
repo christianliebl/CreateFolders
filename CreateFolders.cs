@@ -12,7 +12,13 @@ namespace Editor
 {
     public class CreateFolders : EditorWindow {
     
-        private static string _projectName = "PROJECT_NAME";
+        private static string _projectName = GetProjectFolderName();
+
+        private static string GetProjectFolderName()
+        {
+            string[] pathParts = Application.dataPath.Split('/');
+            return pathParts[pathParts.Length - 2]; // Gets the folder name containing Assets
+        }
 
         [MenuItem("Assets/Create Default Folders")]
         private static void SetUpFolders()
